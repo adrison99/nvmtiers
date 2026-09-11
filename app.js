@@ -24,32 +24,17 @@ const GAMEMODES = [
 // DATA HRÁČŮ - Sem ručně přidáváš a upravuješ hráče!
 const playersData = [
   {
-    name: "Marlowww",
-    region: "NA",
+    name: "Okurka8855",
+    region: "EU",
     tiers: {
-      smp: { active: "HT1", peak: null },
-      mace: { active: "HT1", peak: null },
-      netheritepot: { active: "HT1", peak: "Peak HT1" },
-      pot: { active: "HT1", peak: null },
-      vanilla: { active: "HT1", peak: null },
-      sword: { active: "HT1", peak: null },
-      cart: { active: "LT1", peak: null },
-      uhc: { active: "LT1", peak: null },
-      diasmp: { active: "LT3", peak: null }
+      vanilla: { active: "LT3", peak: null }
     }
   },
   {
-    name: "ItzRealMe",
-    region: "NA",
+    name: "Adrison99",
+    region: "EU",
     tiers: {
-      sword: { active: "HT3", peak: null },
-      smp: { active: "HT1", peak: null },
-      pot: { active: "HT1", peak: null },
-      vanilla: { active: "HT1", peak: null },
-      netheritepot: { active: "HT1", peak: null },
-      mace: { active: "LT2", peak: null },
-      uhc: { active: "LT2", peak: null },
-      axe: { active: "LT2", peak: null }
+      sword: { active: "LT3", peak: null }
     }
   }
 ];
