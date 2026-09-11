@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minecraft Tierlist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#0b0e14] text-gray-200 font-sans min-h-screen">
+
+  <!-- Navbar -->
+  <header class="border-b border-gray-800 bg-[#0f131c] px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+    <div class="flex items-center space-x-3">
+      <span class="text-2xl font-black tracking-wider text-amber-500 uppercase">MCTIERS</span>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="relative w-full max-w-xs">
+      <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+      <input type="text" id="searchInput" placeholder="Search player..." 
+             class="w-full bg-[#161b26] border border-gray-700 rounded-xl py-1.5 pl-9 pr-4 text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-amber-500">
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Gamemode Tabs -->
+    <div class="flex flex-wrap gap-2 mb-8 bg-[#131722] p-2 rounded-2xl border border-gray-800" id="tabsContainer">
+      <!-- Generated via JS -->
+    </div>
+
+    <!-- Overall View (Leaderboard) -->
+    <div id="overallView" class="space-y-3">
+      <!-- Player Rows Generated via JS -->
+    </div>
+
+    <!-- Gamemode Tier Columns View -->
+    <div id="gamemodeView" class="hidden grid grid-cols-1 md:grid-cols-5 gap-4">
+      <!-- Tier 1 to Tier 5 Columns Generated via JS -->
+    </div>
+  </main>
+
+  <!-- Player Profile Modal -->
+  <div id="playerModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-[#131722] border border-gray-800 rounded-2xl w-full max-w-md p-6 relative shadow-2xl">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center space-y-3">
+        <img id="modalAvatar" src="" class="w-20 h-20 rounded-full mx-auto border-2 border-amber-500 shadow-md">
+        <h2 id="modalName" class="text-2xl font-bold text-white"></h2>
+        <div id="modalRank" class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-full text-xs font-semibold"></div>
+        <p id="modalRegion" class="text-xs text-gray-400 uppercase tracking-widest"></p>
+
+        <!-- Overall Rank Box -->
+        <div class="bg-[#1a202c] border border-gray-700/50 rounded-xl p-3 flex justify-between items-center my-4">
+          <div class="flex items-center space-x-2">
+            <span id="modalPosition" class="bg-amber-500 text-black font-extrabold italic px-2 py-0.5 rounded text-sm"></span>
+            <span class="font-bold text-white text-sm">OVERALL</span>
+          </div>
+          <span id="modalPoints" class="text-gray-400 text-sm"></span>
+        </div>
+
+        <!-- Tiers Grid in Modal -->
+        <div>
+          <h3 class="text-xs font-bold text-gray-400 uppercase text-left mb-2 tracking-wider">TIERS</h3>
+          <div id="modalTiers" class="flex flex-wrap gap-2 justify-start bg-[#0b0e14] p-3 rounded-xl border border-gray-800">
+            <!-- Modal Tier Icons Generated via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
