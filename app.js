@@ -6,19 +6,19 @@ const POINT_VALUES = {
   "Peak HT3": 14, "Peak LT2": 22, "Peak HT2": 29, "Peak LT1": 44, "Peak HT1": 54
 };
 
-// Seznam Gamemodů a jejich ikony (obrázky nebo fa-icons)
+// Seznam Gamemodů s nastavením na vlastní PNG obrázky
 const GAMEMODES = [
-  { id: "overall", name: "Overall", icon: '<i class="fa-solid fa-trophy text-amber-400"></i>' },
-  { id: "vanilla", name: "Vanilla", icon: '<i class="fa-solid fa-gem text-purple-400"></i>' },
-  { id: "uhc", name: "UHC", icon: '<i class="fa-solid fa-heart text-red-500"></i>' },
-  { id: "pot", name: "Pot", icon: '<i class="fa-solid fa-flask text-pink-400"></i>' },
-  { id: "netheritepot", name: "NetheritePot", icon: '<i class="fa-solid fa-skull text-indigo-400"></i>' },
-  { id: "smp", name: "SMP", icon: '<i class="fa-solid fa-compact-disc text-teal-400"></i>' },
-  { id: "sword", name: "Sword", icon: '<i class="fa-solid fa-sword text-blue-400"></i>' },
-  { id: "axe", name: "Axe", icon: '<i class="fa-solid fa-axe text-cyan-400"></i>' },
-  { id: "mace", name: "Mace", icon: '<i class="fa-solid fa-hammer text-gray-400"></i>' },
-  { id: "cart", name: "Cart", isCustomImg: true, src: "cart.png" },
-  { id: "diasmp", name: "DiaSMP", isCustomImg: true, src: "diasmp.png" }
+  { id: "overall", name: "Overall", icon: "overall.png", isCustomImg: true },
+  { id: "vanilla", name: "Vanilla", icon: "vanilla.png", isCustomImg: true },
+  { id: "uhc", name: "UHC", icon: "uhc.png", isCustomImg: true },
+  { id: "pot", name: "Pot", icon: "pot.png", isCustomImg: true },
+  { id: "netheritepot", name: "NetheritePot", icon: "netheritepot.png", isCustomImg: true },
+  { id: "smp", name: "SMP", icon: "smp.png", isCustomImg: true },
+  { id: "sword", name: "Sword", icon: "sword.png", isCustomImg: true },
+  { id: "axe", name: "Axe", icon: "axe.png", isCustomImg: true },
+  { id: "mace", name: "Mace", icon: "mace.png", isCustomImg: true },
+  { id: "cart", name: "Cart", icon: "cart.png", isCustomImg: true },
+  { id: "diasmp", name: "DiaSMP", icon: "diasmp.png", isCustomImg: true }
 ];
 
 // DATA HRÁČŮ - Sem ručně přidáváš a upravuješ hráče!
@@ -34,7 +34,8 @@ const playersData = [
       vanilla: { active: "HT1", peak: null },
       sword: { active: "HT1", peak: null },
       cart: { active: "LT1", peak: null },
-      uhc: { active: "LT1", peak: null }
+      uhc: { active: "LT1", peak: null },
+      diasmp: { active: "LT3", peak: null }
     }
   },
   {
@@ -60,7 +61,7 @@ function calculatePoints(player) {
   let total = 0;
   for (let gm in player.tiers) {
     const tierObj = player.tiers[gm];
-    if (tierObj.active) {
+    if (tierObj && tierObj.active) {
       total += POINT_VALUES[tierObj.active] || 0;
     }
   }
@@ -76,13 +77,16 @@ function getRankTitle(points) {
   return "Combatant";
 }
 
+// Pomocná funkce pro vygenerování <img> tagu pro ikonu
+function getGamemodeIconHtml(gm, extraClass = "w-4 h-4 object-contain") {
+  return `<img src="${gm.icon}" class="${extraClass}" onerror="this.style.display='none'">`;
+}
+
 // Inicializace záložek
 function renderTabs() {
   const container = document.getElementById("tabsContainer");
   container.innerHTML = GAMEMODES.map(gm => {
-    const iconHtml = gm.isCustomImg 
-      ? `<img src="${gm.src}" class="w-4 h-4 object-contain inline">` 
-      : gm.icon;
+    const iconHtml = getGamemodeIconHtml(gm, "w-4 h-4 object-contain inline");
 
     return `
       <button onclick="switchTab('${gm.id}')" 
@@ -126,9 +130,7 @@ function renderOverall(filter = "") {
     const tierIconsHtml = Object.entries(player.tiers).map(([gmId, tierData]) => {
       const gm = GAMEMODES.find(g => g.id === gmId);
       if (!gm || !tierData.active) return "";
-      const icon = gm.isCustomImg 
-        ? `<img src="${gm.src}" class="w-3.5 h-3.5 object-contain">` 
-        : gm.icon;
+      const icon = getGamemodeIconHtml(gm, "w-4 h-4 object-contain");
 
       return `
         <div class="flex flex-col items-center group relative cursor-pointer" onclick="openPlayerModal('${player.name}')">
@@ -224,9 +226,7 @@ function openPlayerModal(playerName) {
     const gm = GAMEMODES.find(g => g.id === gmId);
     if (!gm || !tierData.active) return "";
 
-    const icon = gm.isCustomImg 
-      ? `<img src="${gm.src}" class="w-4 h-4 object-contain">` 
-      : gm.icon;
+    const icon = getGamemodeIconHtml(gm, "w-5 h-5 object-contain");
 
     // Detekce Active / Retired / Peak textu
     let statusText = `Active ${tierData.active}`;
