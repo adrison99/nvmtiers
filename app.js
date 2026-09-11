@@ -24,7 +24,7 @@ const GAMEMODES = [
 // DATA HRÁČŮ - Sem ručně přidáváš a upravuješ hráče!
 const playersData = [
   {
-    name: "Okurka8855",
+    name: "okurka8855",
     region: "EU",
     tiers: {
       vanilla: { active: "LT3", peak: null }
@@ -34,7 +34,11 @@ const playersData = [
     name: "Adrison99",
     region: "EU",
     tiers: {
-      sword: { active: "LT3", peak: null }
+      sword: { active: "LT3", peak: null },
+      cart: { active: "LT3", peak: null },
+      uhc: { active: "LT3", peak: null },
+      axe: { active: "LT3", peak: null },
+      vanilla: { active: "LT3", peak: null }
     }
   }
 ];
