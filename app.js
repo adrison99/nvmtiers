@@ -21,7 +21,7 @@ const GAMEMODES = [
   { id: "diasmp", name: "DiaSMP", icon: "diasmp.png", isCustomImg: true }
 ];
 
-// DATA HRÁČŮ - Sem ručně přidáváš a upravuješ hráče!
+// DATA HRÁČŮ - Opravená struktura
 const playersData = [
   {
     name: "okurka8855",
@@ -39,8 +39,9 @@ const playersData = [
       uhc: { active: "LT3", peak: null },
       axe: { active: "LT3", peak: null },
       vanilla: { active: "LT3", peak: null }
-    },
-    {
+    }
+  },
+  {
     name: "Puvod",
     region: "EU",
     tiers: {
