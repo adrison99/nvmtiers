@@ -39,6 +39,15 @@ const playersData = [
       uhc: { active: "LT3", peak: null },
       axe: { active: "LT3", peak: null },
       vanilla: { active: "LT3", peak: null }
+    },
+    {
+    name: "Puvod",
+    region: "EU",
+    tiers: {
+      smp: { active: "LT3", peak: null },
+      diasmp: { active: "LT3", peak: null },
+      uhc: { active: "LT3", peak: null },
+      axe: { active: "LT3", peak: null }
     }
   }
 ];
