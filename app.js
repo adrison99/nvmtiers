@@ -21,7 +21,7 @@ const GAMEMODES = [
   { id: "diasmp", name: "DiaSMP", icon: "diasmp.png", isCustomImg: true }
 ];
 
-// DATA HRÁČŮ - Opravená struktura
+// DATA HRÁČŮ - Správný zápis
 const playersData = [
   {
     name: "okurka8855",
@@ -49,6 +49,15 @@ const playersData = [
       diasmp: { active: "LT3", peak: null },
       uhc: { active: "LT3", peak: null },
       axe: { active: "LT3", peak: null }
+    }
+  },
+  {
+    name: "Atrajmix_",
+    region: "EU",
+    tiers: {
+      pot: { active: "LT3", peak: null },
+      sword: { active: "LT3", peak: null },
+      smp: { active: "LT3", peak: null }
     }
   }
 ];
